@@ -15,6 +15,18 @@
             type="font/woff2"
             crossorigin="crossorigin">
         <link rel="stylesheet" href="css/style.css">
+        <script>
+            (function(){try{var m=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if(!m&&!sessionStorage.getItem('intro')&&!location.hash&&window.scrollY<10){document.documentElement.classList.add('intro');sessionStorage.setItem('intro','1');}}catch(e){}})();
+        </script>
+        <style>
+            .intro .hero-text>*{animation-play-state:paused;opacity:0}
+            .intro .chip{opacity:0}
+            .intro .reveal{visibility:hidden}
+            .chip{transition:opacity .8s ease .2s}
+            .intro .site-header{opacity:0}
+            .site-header{transition:opacity .8s ease}
+        </style>
     </head>
     <body>
         <a class="skip" href="#inhalt">Zum Inhalt springen</a>
@@ -531,5 +543,6 @@
         <script src="js/winterhaus-daten.js"></script>
         <script src="js/toy.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/intro.js"></script>
     </body>
 </html>
