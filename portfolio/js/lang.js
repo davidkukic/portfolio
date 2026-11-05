@@ -9,7 +9,7 @@ var EN={
 "Zum Inhalt springen":"Skip to content","Hauptnavigation":"Main navigation",
 "Projekte":"Projects","Über mich":"About me","Lebenslauf":"CV","Kontakt":"Contact",
 "Portfolio · Medientechnik":"Portfolio · Media Technology",
-"Ich baue Welten aus":"I build worlds out of","Gestaltung, Web und 3D.":"design, web and 3D.",
+"David Kukic":"David Kukic","Gestaltung, Web und 3D":"Design, web and 3D","Programme:":"Software:","Illustrator, InDesign, Hostinger Website Builder":"Illustrator, InDesign, Hostinger Website Builder","After Effects":"After Effects","Blender":"Blender","Maya":"Maya","Ich besuche die HTBLuVA Villach. Hier zeige ich meine Arbeiten und womit ich gestalte.":"I attend the HTBLuVA Villach. Here I show my work and the tools I use.","Gestaltung, Web und 3D.":"design, web and 3D.",
 "Ich bin David Kukic und besuche die HTBLuVA Villach. Hier zeige ich meine Arbeiten und womit ich gestalte.":"I’m David Kukic and I attend the HTBLuVA Villach. Here I show my work and the tools I use.",
 "Projekte ansehen":"View projects","Lebenslauf (PDF)":"CV (PDF)",
 "Schwerpunkte":"Focus areas","Abb. 01 — David Kukic":"Fig. 01 — David Kukic","Platzhalter für ein Porträtfoto von David Kukic":"Placeholder for a portrait photo of David Kukic","Diplomarbeit · 2026":"Diploma thesis · 2026","Film und Video · 2026":"Film and video · 2026",
