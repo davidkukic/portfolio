@@ -21,8 +21,8 @@
     root.style.overflow = 'hidden';
     var failsafe = setTimeout(done, 8000);
     var dur = 1200,
-        gap = 50,
-        move = 1000,
+        gap = 800,
+        move = 200,
         pause = 300;
     function rnd(a, b) {
         return a + Math.random() * (b - a);
