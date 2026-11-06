@@ -1463,3 +1463,52 @@ section.reveal+section.reveal {
         grid-template-columns: 1fr;
     }
 }
+/* Über mich: noch größer, Text weiter rechts */
+#ueber-mich .about2 {
+    grid-template-columns: 18rem 1fr;
+    gap: clamp(2rem,7vw,6rem);
+    max-width: none;
+}
+#ueber-mich .statement {
+    font-size: clamp(1.6rem,3vw,2.3rem);
+    max-width: 30ch;
+}
+#ueber-mich .about2 .services {
+    grid-template-columns: repeat(2,minmax(0,20rem));
+    gap: 1.25rem;
+}
+#ueber-mich .about2 .svc {
+    padding: 1.75rem;
+}
+#ueber-mich .about2 .svc svg {
+    width: 2.4rem;
+    height: 2.4rem;
+}
+#ueber-mich .about2 .svc h3 {
+    font-size: 1.35rem;
+}
+#ueber-mich .about2 .svc p {
+    font-size: 1.1rem;
+}
+#ueber-mich h3 {
+    font-size: 1.35rem;
+}
+#ueber-mich .timeline {
+    font-size: 1.15rem;
+}
+#ueber-mich .tl-head {
+    font-size: 1.05rem;
+}
+@media (max-width:51.25em) {
+    #ueber-mich .about2 {
+        grid-template-columns: 1fr;
+    }
+    #ueber-mich .portrait {
+        max-width: 16rem;
+    }
+}
+@media (max-width:40em) {
+    #ueber-mich .about2 .services {
+        grid-template-columns: 1fr;
+    }
+}
