@@ -21,7 +21,7 @@
     root.style.overflow = 'hidden';
     var failsafe = setTimeout(done, 8000);
     var dur = 1200,
-        gap = 800,
+        gap = 200,
         move = 200,
         pause = 300;
     function rnd(a, b) {
