@@ -19,11 +19,11 @@
     }
     window.scrollTo(0, 0);
     root.style.overflow = 'hidden';
-    var failsafe = setTimeout(done, 9000);
+    var failsafe = setTimeout(done, 8000);
     var dur = 1300,
         gap = 180,
         move = 1300,
-        pause = 50;
+        pause = 10;
     function rnd(a, b) {
         return a + Math.random() * (b - a);
     }
