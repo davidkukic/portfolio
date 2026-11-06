@@ -1512,3 +1512,21 @@ section.reveal+section.reveal {
         grid-template-columns: 1fr;
     }
 }
+/* Boxen: 3 in einer Reihe */
+#ueber-mich .about2 .services {
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 1rem;
+}
+#ueber-mich .about2 .svc {
+    padding: 1.4rem 1.25rem;
+}
+@media (max-width:75em) {
+    #ueber-mich .about2 .services {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+    }
+}
+@media (max-width:40em) {
+    #ueber-mich .about2 .services {
+        grid-template-columns: 1fr;
+    }
+}
