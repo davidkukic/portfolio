@@ -20,10 +20,10 @@
     window.scrollTo(0, 0);
     root.style.overflow = 'hidden';
     var failsafe = setTimeout(done, 9000);
-    var dur = 1400,
+    var dur = 1300,
         gap = 180,
         move = 1300,
-        pause = 250;
+        pause = 150;
     function rnd(a, b) {
         return a + Math.random() * (b - a);
     }
