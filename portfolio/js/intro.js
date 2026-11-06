@@ -23,7 +23,7 @@
     var dur = 1300,
         gap = 180,
         move = 1300,
-        pause = 150;
+        pause = 50;
     function rnd(a, b) {
         return a + Math.random() * (b - a);
     }
