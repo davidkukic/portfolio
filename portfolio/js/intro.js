@@ -1,6 +1,4 @@
-/*  Start-Animation: Die sechs Seiten des Würfels fliegen heran und setzen sich 
- * zusammen. 
- */
+/* Start-Animation: Die sechs Seiten setzen sich in der Mitte zum Würfel zusammen, dann gleitet er nach rechts an seinen Platz. */
 (function () {
     var root = document.documentElement;
     function done() {
@@ -11,21 +9,24 @@
     }
     if (!root.classList.contains('intro')) 
         return;
+    var stage = document.querySelector('.stage');
     var faces = []
         .slice
         .call(document.querySelectorAll('.cube .face'));
-    if (!faces.length || !faces[0].animate) {
+    if (!stage || !faces.length || !faces[0].animate) {
         done();
         return;
     }
     window.scrollTo(0, 0);
-    var failsafe = setTimeout(done, 6000);
-    var dur = 1100,
-        gap = 140;
+    root.style.overflow = 'hidden';
+    var failsafe = setTimeout(done, 9000);
+    var dur = 1400,
+        gap = 180,
+        move = 1300,
+        pause = 250;
     function rnd(a, b) {
         return a + Math.random() * (b - a);
     }
-    // feste Startrichtungen: jede Seite kommt aus einer anderen Ecke
     var dirs = [
         [
             -1, -1
@@ -47,13 +48,44 @@
         ]
     ];
     function go() {
+        var r = stage.getBoundingClientRect(),
+            vw = window.innerWidth,
+            vh = window.innerHeight;
+        var dx = vw / 2 - (r.left + r.width / 2),
+            dy = vh / 2 - (r.top + r.height / 2),
+            big = vw < 820
+                ? 1.5
+                : 1.9;
+        var assemble = dur + gap * (faces.length - 1),
+            all = assemble + pause + move;
+        stage.style.position = 'relative';
+        stage.style.zIndex = '40';
+        stage.style.pointerEvents = 'none';
+        var from = 'translate(' + dx + 'px,' + dy + 'px) scale(' + big + ')';
+        var sa = stage.animate([
+            {
+                transform: from,
+                offset: 0,
+                easing: 'linear'
+            }, {
+                transform: from,
+                offset: (assemble + pause) / all,
+                easing: 'cubic-bezier(.65,0,.25,1)'
+            }, {
+                transform: 'none',
+                offset: 1
+            }
+        ], {
+            duration: all,
+            fill: 'both'
+        });
         var anims = faces.map(function (f, i) {
             var end = getComputedStyle(f).transform;
             if (end === 'none') 
                 end = '';
             var d = dirs[i % dirs.length],
                 dist = 22;
-            var from = 'translate3d(' + (
+            var start = 'translate3d(' + (
                 d[0] * dist
             ) + 'rem,' + (
                 d[1] * dist * .6
@@ -61,7 +93,7 @@
                     ',1,' + rnd(90, 200) + 'deg) scale(.4) ' + end;
             return f.animate([
                 {
-                    transform: from,
+                    transform: start,
                     opacity: 0
                 }, {
                     transform: end,
@@ -74,8 +106,7 @@
                 fill: 'both'
             });
         });
-        var total = dur + gap * (faces.length - 1);
-        // Text, Menü und Schilder erscheinen kurz bevor der Würfel fertig ist
+        // Text, Menü und Schilder erscheinen, während der Würfel nach rechts gleitet
         setTimeout(function () {
             root
                 .classList
@@ -83,11 +114,13 @@
             root
                 .classList
                 .add('intro-end');
-        }, total - 500);
+        }, assemble + pause + move * .4);
         setTimeout(function () {
             anims.forEach(function (a) {
                 a.cancel();
             });
+            sa.cancel();
+            stage.style.position = stage.style.zIndex = stage.style.pointerEvents = '';
             clearTimeout(failsafe);
             root.style.overflow = '';
             setTimeout(function () {
@@ -95,7 +128,7 @@
                     .classList
                     .remove('intro-end');
             }, 1500);
-        }, total + 50);
+        }, all + 50);
     }
     if (document.readyState === 'complete') 
         requestAnimationFrame(go);
