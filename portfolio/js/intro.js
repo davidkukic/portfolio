@@ -22,8 +22,8 @@
     var failsafe = setTimeout(done, 8000);
     var dur = 1200,
         gap = 180,
-        move = 1300,
-        pause = 1;
+        move = 1000,
+        pause = 100;
     function rnd(a, b) {
         return a + Math.random() * (b - a);
     }
