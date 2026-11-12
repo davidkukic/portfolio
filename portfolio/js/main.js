@@ -47,3 +47,30 @@ if(rig)window.addEventListener('pointermove',function(e){
   rig.style.setProperty('--rx',(-14-y*26)+'deg');rig.style.setProperty('--ry',(22+x*40)+'deg');
 });
 })();
+
+/* Visitenkarte: langsame Eigendrehung, mit Maus oder Finger frei drehbar, Klick dreht um */
+(function(){
+  var st=document.querySelector('.flip-stage'),sp=st&&st.querySelector('.fl-spin');if(!sp)return;
+  var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ry=-20,rx=8,vy=0,vx=0,drag=false,hover=false,lx=0,ly=0,lt=0,moved=0,target=null,last=performance.now();
+  var AUTO=still?0:0.004; /* Grad pro ms = 4 Grad pro Sekunde, eine Runde in 90 s */
+  function cl(v,a,b){return Math.max(a,Math.min(b,v));}
+  st.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')hover=true;});
+  st.addEventListener('pointerleave',function(){hover=false;});
+  st.addEventListener('pointerdown',function(e){drag=true;moved=0;lx=e.clientX;ly=e.clientY;lt=e.timeStamp;vy=vx=0;target=null;st.classList.add('drag');try{st.setPointerCapture(e.pointerId);}catch(_){}});
+  st.addEventListener('pointermove',function(e){if(!drag)return;var dx=e.clientX-lx,dy=e.clientY-ly,dt=Math.max(8,e.timeStamp-lt);
+    lx=e.clientX;ly=e.clientY;lt=e.timeStamp;moved+=Math.abs(dx)+Math.abs(dy);
+    ry+=dx*.45;rx=cl(rx-dy*.35,-45,45);vy=dx*.45/dt;vx=-dy*.35/dt;});
+  function up(){if(!drag)return;drag=false;st.classList.remove('drag');
+    if(moved<6){var b=Math.round(ry/180)*180;target=b+180;vy=vx=0;}}
+  st.addEventListener('pointerup',up);st.addEventListener('pointercancel',up);
+  function loop(now){var dt=Math.min(50,now-last);last=now;
+    if(!drag){
+      if(target!==null){ry+=(target-ry)*Math.min(1,dt*.008);if(Math.abs(target-ry)<.3){ry=target;target=null;}}
+      else{ry+=vy*dt;rx+=vx*dt;var f=Math.pow(.994,dt);vy*=f;vx*=f;if(!hover)ry+=AUTO*dt;}
+      rx+=(8-rx)*Math.min(1,dt*.002);
+    }
+    sp.style.transform='rotateX('+rx.toFixed(2)+'deg) rotateY('+ry.toFixed(2)+'deg)';
+    requestAnimationFrame(loop);}
+  requestAnimationFrame(loop);
+})();
