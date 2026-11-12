@@ -289,3 +289,7 @@ section.reveal+section.reveal{border-top:1px solid var(--color-line)}
 .fl-contact{position:absolute;left:8%;right:8%;bottom:11%;display:flex;justify-content:space-between;align-items:center}
 .fl-face .fl-contact span{display:flex;align-items:center;gap:.45em;font-size:.72em;color:#2A3450}
 .fl-contact svg{width:1.1em;height:1.1em}
+.fl-spin{width:100%;height:100%;transform-style:preserve-3d;animation:flspin 18s linear infinite,bob 6s ease-in-out infinite}
+.flip-stage:hover .fl-spin{animation-play-state:paused}
+@keyframes flspin{from{transform:rotateX(8deg) rotateY(0deg)}to{transform:rotateX(8deg) rotateY(360deg)}}
+@media (prefers-reduced-motion:reduce){.fl-spin{animation:none}}
