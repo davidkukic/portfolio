@@ -48,12 +48,11 @@ if(rig)window.addEventListener('pointermove',function(e){
 });
 })();
 
-/* Visitenkarte: langsame Eigendrehung, mit Maus oder Finger frei drehbar, Klick dreht um */
+/* Visitenkarte: mit Maus oder Finger frei drehbar, Klick dreht um */
 (function(){
   var st=document.querySelector('.flip-stage'),sp=st&&st.querySelector('.fl-spin');if(!sp)return;
   var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var ry=-20,rx=8,vy=0,vx=0,drag=false,hover=false,lx=0,ly=0,lt=0,moved=0,target=null,last=performance.now();
-  var AUTO=still?0:0.004; /* Grad pro ms = 4 Grad pro Sekunde, eine Runde in 90 s */
+  var ry=0,rx=0,vy=0,vx=0,drag=false,hover=false,lx=0,ly=0,lt=0,moved=0,target=null,last=performance.now();
   function cl(v,a,b){return Math.max(a,Math.min(b,v));}
   st.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')hover=true;});
   st.addEventListener('pointerleave',function(){hover=false;});
@@ -67,8 +66,8 @@ if(rig)window.addEventListener('pointermove',function(e){
   function loop(now){var dt=Math.min(50,now-last);last=now;
     if(!drag){
       if(target!==null){ry+=(target-ry)*Math.min(1,dt*.008);if(Math.abs(target-ry)<.3){ry=target;target=null;}}
-      else{ry+=vy*dt;rx+=vx*dt;var f=Math.pow(.994,dt);vy*=f;vx*=f;if(!hover)ry+=AUTO*dt;}
-      rx+=(8-rx)*Math.min(1,dt*.002);
+      else{ry+=vy*dt;rx+=vx*dt;var f=Math.pow(.994,dt);vy*=f;vx*=f;}
+      rx+=(0-rx)*Math.min(1,dt*.002);
     }
     sp.style.transform='rotateX('+rx.toFixed(2)+'deg) rotateY('+ry.toFixed(2)+'deg)';
     requestAnimationFrame(loop);}
