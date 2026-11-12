@@ -73,3 +73,13 @@ if(rig)window.addEventListener('pointermove',function(e){
     requestAnimationFrame(loop);}
   requestAnimationFrame(loop);
 })();
+
+/* Lebenslauf: im Fenster ansehen (Desktop), am Handy im neuen Tab */
+(function(){
+  var d=document.getElementById('cv-view');if(!d)return;var f=d.querySelector('iframe');
+  document.querySelectorAll('[data-cv]').forEach(function(a){a.addEventListener('click',function(e){
+    if(window.innerWidth<820||navigator.pdfViewerEnabled===false)return;
+    e.preventDefault();if(!f.src)f.src=f.dataset.src;d.showModal();});});
+  d.querySelector('[data-close]').addEventListener('click',function(){d.close();});
+  d.addEventListener('click',function(e){if(e.target===d)d.close();});
+})();

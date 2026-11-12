@@ -65,7 +65,7 @@ var EN={
 "Ausbildung, Praktikum, Skills und Sprachen auf einer Seite.":"Education, internship, skills and languages on one page.",
 "Praktikum":"Internship","Wasserversorgungsverband Faaker See, Sommer 2025":"Wasserversorgungsverband Faaker See, summer 2025",
 "Sprachen":"Languages","Kroatisch (Muttersprache), Deutsch, Englisch":"Croatian (native), German, English",
-"Lebenslauf herunterladen":"Download CV","Stand Oktober 2026":"As of October 2026","Profil":"Profile",
+"Lebenslauf herunterladen":"Download CV","Lebenslauf ansehen":"View CV","Ansehen oder herunterladen":"View or download","Herunterladen":"Download","In neuem Tab":"Open in new tab","Porträt von David Kukić in dunklem Anzug mit blauer Krawatte":"Portrait of David Kukić in a dark suit with a blue tie","Stand Oktober 2026":"As of October 2026","Profil":"Profile",
 "Du hast eine Frage oder ein Projekt? Schreib mir eine E-Mail.":"Have a question or a project? Send me an email.",
 "E-Mail schreiben":"Write an email",
 "Medientechnik · Gestaltung, Web und 3D":"Media technology · Design, web and 3D","Schreib mir":"Write to me",
